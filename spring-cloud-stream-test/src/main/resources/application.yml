@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    function:
+      definition: myProcessor;functionDataSupplier;myConsumer
+    stream:
+      bindings:
+#        mySupplier-out-0:
+#          destination: data-for-process
+        functionDataSupplier-in-0:
+          destination: data-source
+        functionDataSupplier-out-0:
+          destination: data-for-process
+        myProcessor-in-0:
+          destination: data-for-process
+        myProcessor-out-0:
+          destination: processed-data
+        myConsumer-in-0:
+          destination:
